@@ -1,0 +1,2 @@
+NSPredicate *compPred = [NSPredicate predicateWithFormat:@"title = 'Hello' AND author = 'Some Person' AND age > 18"];
+xmlNodePtr query = [WNCAMLQuery queryElementWithPredicate:compPred sortDescriptors:sorts mapping:nil];
