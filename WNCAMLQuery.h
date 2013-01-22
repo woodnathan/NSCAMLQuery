@@ -25,6 +25,7 @@
 #import <libxml/tree.h>
 #import "WNPredicateTransformer.h"
 #import "WNSortTransformer.h"
+#import "WNCAMLQueryOptions.h"
 
 @interface WNCAMLQuery : NSObject
 
