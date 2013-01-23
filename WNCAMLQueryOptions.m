@@ -91,6 +91,7 @@ inline xmlChar *stringValueForViewScope(WNCAMLQueryOptionsViewScope scope);
     xmlNodePtr queryOptsElement = xmlNewNode(NULL, (const xmlChar *)"QueryOptions");
     
     xmlNewBooleanNodeOnParent(queryOptsElement, "DateInUTC", self.dateInUTC);
+    xmlNewBooleanNodeOnParent(queryOptsElement, "ExpandRecurrence", self.expandRecurrence);
     if (self.folder)
         xmlNewNodeOnParent(queryOptsElement, "Folder", NULL, stringValueForString(self.folder));
     if (self.listItemCollectionPositionNext)

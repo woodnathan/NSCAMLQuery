@@ -21,6 +21,7 @@ typedef enum {
 - (xmlNodePtr)queryOptionsNode;
 
 @property (nonatomic, assign) BOOL dateInUTC;
+@property (nonatomic, assign) BOOL expandRecurrence;
 @property (nonatomic, copy) NSString *folder;
 @property (nonatomic, copy) NSString *listItemCollectionPositionNext; // Paging
 @property (nonatomic, assign) BOOL includeMandatoryColumns;
