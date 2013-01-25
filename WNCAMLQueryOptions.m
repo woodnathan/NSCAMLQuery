@@ -13,9 +13,12 @@
 @private
     xmlNodePtr _xmlNode;
     BOOL _validNode;
+    NSMutableDictionary *_customOptions;
 }
 
 @property (nonatomic, strong) NSRecursiveLock *lock;
+
+@property (nonatomic, readonly) NSMutableDictionary *internalCustomOptions;
 
 - (void)invalidateNode;
 - (xmlNodePtr)generateQueryOptionsElement;
@@ -56,6 +59,26 @@ inline xmlChar *stringValueForViewScope(WNCAMLQueryOptionsViewScope scope);
     copy->_dateInUTC = self->_dateInUTC;
     copy->_folder = [self->_folder copy];
     return copy;
+}
+
+- (NSDictionary *)customOptions
+{
+    return self.internalCustomOptions;
+}
+- (NSMutableDictionary *)internalCustomOptions
+{
+    if (self->_customOptions == nil)
+        self->_customOptions = [[NSMutableDictionary alloc] init];
+    
+    return self->_customOptions;
+}
+- (void)addCustomOption:(NSString *)name value:(NSString *)value
+{
+    [self.internalCustomOptions setObject:value forKey:name];
+}
+- (void)removeCustomOption:(NSString *)name
+{
+    [self.internalCustomOptions removeObjectForKey:name];
 }
 
 - (xmlNodePtr)queryOptionsNode
@@ -110,6 +133,10 @@ inline xmlChar *stringValueForViewScope(WNCAMLQueryOptionsViewScope scope);
     xmlNewNodeOnParent(queryOptsElement, "ExtraIds", NULL, stringValueForString(self.extraIDs));
     xmlNewBooleanNodeOnParent(queryOptsElement, "OptimizeLookups", self.optimizeLookups);
     xmlNewBooleanNodeOnParent(queryOptsElement, "IncludeFragmentChanges", self.includeFragmentChanges);
+    
+    [self->_customOptions enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
+        xmlNewNodeOnParent(queryOptsElement, [key UTF8String], NULL, (xmlChar *)[obj UTF8String]);
+    }];
     
     return queryOptsElement;
 }

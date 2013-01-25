@@ -39,4 +39,8 @@ typedef enum {
 @property (nonatomic, assign) BOOL optimizeLookups;
 @property (nonatomic, assign) BOOL includeFragmentChanges;
 
+@property (nonatomic, readonly) NSDictionary *customOptions;
+- (void)addCustomOption:(NSString *)name value:(NSString *)value;
+- (void)removeCustomOption:(NSString *)name;
+
 @end
