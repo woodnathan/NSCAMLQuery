@@ -46,6 +46,9 @@
 
 + (xmlNodePtr)transformSortDescriptorsIntoOrderElement:(NSArray *)descriptors mapping:(NSDictionary *)mapping
 {
+    if (descriptors == nil || descriptors.count == 0)
+        return NULL;
+    
     mapping = [mapping copy];
     
     xmlNodePtr rootOrderByElement = xmlNewNode(NULL, (const xmlChar *)"OrderBy");
