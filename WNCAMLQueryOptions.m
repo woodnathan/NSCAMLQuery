@@ -1,10 +1,25 @@
 //
 //  WNCAMLQueryOptions.m
-//  NSCAML
 //
-//  Created by Nathan Wood on 22/01/13.
-//  Copyright (c) 2013 Nathan Wood. All rights reserved.
+//  Copyright (c) 2013 Nathan Wood (http://www.woodnathan.com/)
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #import "WNCAMLQueryOptions.h"
 
@@ -33,6 +48,24 @@ inline xmlChar *stringValueForViewScope(WNCAMLQueryOptionsViewScope scope);
 
 
 @implementation WNCAMLQueryOptions
+
+@synthesize dateInUTC = _dateInUTC;
+@synthesize expandRecurrence = _expandRecurrence;
+@synthesize folder = _folder;
+@synthesize listItemCollectionPositionNext = _listItemCollectionPositionNext;
+@synthesize includeMandatoryColumns = _includeMandatoryColumns;
+@synthesize viewAttributes = _viewAttributes;
+@synthesize includePermissions = _includePermissions;
+@synthesize expandUserField = _expandUserField;
+@synthesize recurrenceOrderBy = _recurrenceOrderBy;
+@synthesize includeAttachmentURLs = _includeAttachmentURLs;
+@synthesize includeAttachmentVersion = _includeAttachmentVersion;
+@synthesize removeInvalidXMLCharacters = _removeInvalidXMLCharacters;
+@synthesize extraIDs = _extraIDs;
+@synthesize optimizeLookups = _optimizeLookups;
+@synthesize includeFragmentChanges = _includeFragmentChanges;
+@synthesize customOptions = _customOptions;
+@synthesize lock = _lock;
 
 - (id)init
 {
